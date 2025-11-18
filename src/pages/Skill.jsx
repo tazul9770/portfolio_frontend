@@ -1,6 +1,3 @@
-import axios from "axios";
-import { useEffect } from "react";
-
 const skills = [
   "HTML",
   "CSS",
@@ -13,13 +10,6 @@ const skills = [
 ];
 
 const Skill = () => {
-
-  useEffect(() => {
-    axios.get('https://portfolio-navy-pi-28.vercel.app/api/v1/projects/')
-    .then(res => {
-      console.log(res.data);
-    })
-  }, [])
 
   return (
     <section className="bg-[#0e0e0e] text-white py-16 px-6 md:px-20">

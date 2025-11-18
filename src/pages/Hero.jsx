@@ -1,4 +1,5 @@
 import myImage from "../assets/tazul.png";
+import resumePDF from "../assets/Tazul_Islam_Professional_Resume_Updated.pdf"
 
 const Hero = () => {
   return (
@@ -27,18 +28,21 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50">
-              Hire Me
-            </button>
-            <button className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-8 rounded-full transition duration-300">
+            
+            <a
+              href={resumePDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-8 rounded-full transition duration-300"
+            >
               My Resume
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Right Image */}
         <div className="md:w-1/2 flex justify-center">
-          <div className="relative group w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden">
+          <div className="relative group w-60 h-60 md:w-72 md:h-72 rounded-full overflow-hidden">
             <div className="absolute inset-0 rounded-full border-2 border-red-500 animate-pulse"></div>
             <img
               src={myImage}

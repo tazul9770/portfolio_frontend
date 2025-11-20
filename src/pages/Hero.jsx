@@ -1,5 +1,4 @@
 import myImage from "../assets/tazul.png";
-import resumePDF from "../assets/Tazul_Islam_Professional_Resume_Updated.pdf"
 
 const Hero = () => {
   return (
@@ -30,7 +29,7 @@ const Hero = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             
             <a
-              href={resumePDF}
+              href="https://docs.google.com/document/d/1wKg9RKyLtdNKm4FgYsruA3rE6G0gseoQAuoNWvA5zg4/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-8 rounded-full transition duration-300"

@@ -1,44 +1,57 @@
 const AboutSection = () => {
   return (
-    <section className="relative w-full bg-[#0a0a0a] text-gray-300 py-24 px-6 md:px-20 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-b from-[#0f2538] to-[#0a1a2a] text-gray-300 py-24 px-6 md:px-20 overflow-hidden">
 
-      {/* Soft Gradient Light Behind Text */}
-      <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-red-600/20 via-transparent to-red-600/20 blur-3xl pointer-events-none"></div>
+      {/* Soft Glow */}
+      <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-cyan-500/20 via-transparent to-blue-500/20 blur-3xl pointer-events-none"></div>
 
       <div className="relative max-w-5xl mx-auto">
-        
-        {/* Header & Accent Line */}
+
+        {/* Header */}
         <div className="flex items-center gap-4 mb-12">
-          <div className="h-12 w-1 bg-red-500 rounded-full"></div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-wide">
-            About <span className="text-red-500">Me</span>
+          <div className="h-12 w-1 bg-cyan-400 rounded-full"></div>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            About <span className="text-cyan-300">Me</span>
           </h2>
         </div>
 
         {/* Text Content */}
         <div className="space-y-6 text-lg leading-relaxed">
-          <p className="text-gray-300">
-            I’m a passionate <span className="text-red-400 font-semibold">Software Developer</span> who loves
-            turning ideas into beautifully crafted digital experiences. I build products with
-            a strong foundation in clean structure, thoughtful UI/UX, and smooth functionality.
+
+          <p>
+            I'm a dedicated <span className="text-cyan-300 font-semibold">Software Developer</span> passionate about building clean, modern, and user-focused digital solutions.
+            I strive to create products that balance performance, simplicity, and a great user experience.
           </p>
 
           <p className="text-gray-400">
-            Every line of code I write aims to deliver clarity, consistency, and performance.
-            I enjoy solving problems creatively and continuously improving both myself and the
-            work I produce.
+            My expertise spans <span className="text-cyan-300 font-semibold">frontend and backend development</span>, including frameworks like <span className="text-cyan-300 font-semibold">React, Next.js, Django</span>, and databases such as <span className="text-cyan-300 font-semibold">MySQL & MongoDB</span>. I enjoy writing code that is efficient, maintainable, and scalable.
           </p>
 
-          {/* Highlight Statement */}
-          <div className="bg-[#111] border border-red-500/30 rounded-xl p-6 text-gray-200 text-lg italic shadow-lg hover:shadow-red-500/20 transition duration-300">
-            “Great software isn't just built — it's crafted with patience, intention, and vision.”
+          <p className="text-gray-400">
+            Beyond coding, I have a strong interest in <span className="text-cyan-300 font-semibold">UI/UX design principles</span>, ensuring that the applications I build are intuitive and visually engaging. I also follow best practices in <span className="text-cyan-300 font-semibold">version control, testing, and deployment</span> to deliver reliable software.
+          </p>
+
+          {/* Quote Card */}
+          <div className="bg-[#112533]/60 border border-cyan-400/30 rounded-xl p-6 text-gray-100 italic shadow-lg hover:shadow-cyan-400/20 transition duration-300">
+            “Great software is built with clarity, intention, and continuous improvement.”
           </div>
 
           <p className="text-gray-400">
-            I believe in simplicity with depth. Technology should feel elegant, intuitive, and
-            meaningful. Whether it's the backend logic or the visual finish, everything deserves
-            equal attention and care.
+            I am constantly learning new technologies and keeping up-to-date with industry trends to improve my skills. My focus is on solving real-world problems creatively while maintaining code quality and project efficiency.
           </p>
+
+          <p className="text-gray-400">
+            In addition to development, I value <span className="text-cyan-300 font-semibold">team collaboration, communication, and mentoring</span>. I believe that great products are built not only with code, but with teamwork, feedback, and shared vision.
+          </p>
+
+          <p className="text-gray-400">
+            When I am not coding, I enjoy exploring <span className="text-cyan-300 font-semibold">new technologies, contributing to open-source projects</span>, and refining my design and problem-solving skills through personal projects.
+          </p>
+
+          <p className="text-gray-400">
+            My philosophy is simple: write clean code, build thoughtful experiences, and continually learn. Every project is an opportunity to create something meaningful, efficient, and impactful.
+          </p>
+
         </div>
 
       </div>

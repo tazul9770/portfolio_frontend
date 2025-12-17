@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import apiClient from "../services/api_client";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -22,7 +32,13 @@ const Projects = () => {
   if (loading)
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-900">
-        <p className="text-gray-400 animate-pulse text-lg">Loading projects...</p>
+        <motion.p
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="text-gray-400 text-lg"
+        >
+          Loading projects...
+        </motion.p>
       </div>
     );
 
@@ -41,120 +57,108 @@ const Projects = () => {
     );
 
   return (
-    <div className="min-h-screen p-6 bg-gray-900">
-      <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {projects.map((project) => (
-          <div
+    <section className="min-h-screen bg-gray-900 px-6 py-16">
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-14">
+        <h1 className="text-4xl font-bold text-white mb-3">
+          My Projects
+        </h1>
+        <p className="text-gray-400 text-lg">
+          Some of my recent work & experiments
+        </p>
+      </div>
+
+      {/* Grid */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 max-w-7xl mx-auto"
+      >
+        {projects.map((project, i) => (
+          <motion.div
             key={project.id}
-            className="relative rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden bg-gray-800 flex flex-col"
+            custom={i}
+            variants={cardVariants}
+            whileHover={{ y: -8 }}
+            className="rounded-2xl bg-gray-800 border border-gray-700 hover:border-gray-600 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
           >
             {/* Image */}
-            <div className="relative h-56 overflow-hidden">
+            <div className="relative h-52 overflow-hidden">
               {project.image ? (
-                <>
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                </>
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
               ) : (
-                <div className="flex items-center justify-center h-full text-gray-500 text-lg">
+                <div className="flex items-center justify-center h-full text-gray-500">
                   No Image
                 </div>
               )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
 
             {/* Content */}
-            <div className="p-6 flex flex-col flex-1">
-              <p className="text-2xl font-semibold text-gray-200 mb-2">{project.name}</p>
-              <p className="text-gray-300 mb-4 flex-1">{project.description}</p>
+            <div className="p-5 flex flex-col flex-1">
+              <h2 className="text-xl font-semibold text-white mb-2">
+                {project.name}
+              </h2>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech_stack &&
-                  project.tech_stack.split(",").map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-indigo-700 text-indigo-100 rounded-full text-sm font-medium"
-                    >
-                      {tech.trim()}
-                    </span>
-                  ))}
-              </div>
-
-              <p className="text-gray-400 text-sm mb-4">
-                Created: {new Date(project.created_at).toLocaleDateString()}
+              <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                {project.description}
               </p>
 
-              <p className="text-xl font-semibold text-white mb-2">All Links</p>
-
-              <div className="mt-auto flex flex-wrap gap-3">
-                {project.live_link ? (
-                  <a
-                    href={project.live_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md"
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech_stack?.split(",").map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs rounded-full bg-indigo-600/20 text-indigo-300"
                   >
-                    Live Link
-                  </a>
-                ) : (
-                  <span className="px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed opacity-50">
-                    Live Link
+                    {tech.trim()}
                   </span>
-                )}
+                ))}
+              </div>
 
-                {project.backend_deploy_link ? (
-                  <a
-                    href={project.backend_deploy_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md"
-                  >
-                    Backend Deploy
-                  </a>
-                ) : (
-                  <span className="px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed opacity-50">
-                    Backend Deploy
-                  </span>
-                )}
+              <p className="text-gray-500 text-xs mb-4">
+                {new Date(project.created_at).toLocaleDateString()}
+              </p>
 
-                {project.github_frontend_link ? (
-                  <a
-                    href={project.github_frontend_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300 shadow-md"
-                  >
-                    Frontend Github
-                  </a>
-                ) : (
-                  <span className="px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed opacity-50">
-                    Frontend Github
-                  </span>
-                )}
-
-                {project.github_backend_link ? (
-                  <a
-                    href={project.github_backend_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300 shadow-md"
-                  >
-                    Backend Github
-                  </a>
-                ) : (
-                  <span className="px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed opacity-50">
-                    Backend Github
-                  </span>
-                )}
+              {/* Links */}
+              <div className="mt-auto grid grid-cols-2 gap-3">
+                <ProjectLink label="Live" link={project.live_link} />
+                <ProjectLink label="Backend" link={project.backend_deploy_link} />
+                <ProjectLink label="FE GitHub" link={project.github_frontend_link} />
+                <ProjectLink label="BE GitHub" link={project.github_backend_link} />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </section>
+  );
+};
+
+const ProjectLink = ({ label, link }) => {
+  if (!link)
+    return (
+      <button
+        disabled
+        className="px-4 py-2 rounded-lg bg-gray-700 text-gray-400 text-sm cursor-not-allowed"
+      >
+        {label}
+      </button>
+    );
+
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm text-center hover:bg-blue-700 transition"
+    >
+      {label}
+    </a>
   );
 };
 

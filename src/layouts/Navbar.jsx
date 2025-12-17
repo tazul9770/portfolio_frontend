@@ -1,37 +1,60 @@
-import { Menu, X } from 'lucide-react'; 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-[#121212] text-white px-8 py-6 shadow-md relative">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="text-3xl font-bold">Tazul Islam</Link>
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link
+          to="/"
+          className="text-3xl font-extrabold tracking-wide hover:text-cyan-400 transition duration-300"
+        >
+          Tazul <span className="text-cyan-400">Islam</span>
+        </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-lg items-center">
-          <li><Link to="/projects" className="hover:text-red-500 transition">Projects</Link></li>
-          <li><Link to="/contact" className="hover:text-red-500 transition">Contact</Link></li>
+        <ul className="hidden md:flex gap-10 text-lg font-medium">
+          {["Projects", "Contact"].map((item) => (
+            <li key={item}>
+              <Link
+                to={`/${item.toLowerCase()}`}
+                className="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Button */}
         <button
-          className="md:hidden focus:outline-none transition-transform duration-300"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 rounded-md hover:bg-gray-700 transition"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {open ? <X className="text-cyan-400" /> : <Menu className="text-cyan-400" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="md:hidden mt-4 space-y-4 text-lg">
-          <li><a href="/projects" className="block hover:text-red-500">Projects</a></li>
-          <li><a href="/contact" className="block hover:text-red-500">Contact</a></li>
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ${
+          open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="px-6 py-4 bg-gray-800 space-y-4 text-lg">
+          <Link onClick={() => setOpen(false)} to="/projects" className="block hover:text-cyan-400">
+            Projects
+          </Link>
+          <Link onClick={() => setOpen(false)} to="/contact" className="block hover:text-cyan-400">
+            Contact
+          </Link>
         </ul>
-      )}
+      </div>
     </nav>
   );
 };

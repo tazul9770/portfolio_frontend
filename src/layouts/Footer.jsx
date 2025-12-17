@@ -1,63 +1,68 @@
-import React from 'react';
-import { Link } from 'react-router';
+import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <footer className="bg-black text-white px-10 py-12">
-  <div className="max-w-7xl mx-auto grid sm:grid-cols-3 gap-10">
+  return (
+    <footer className="bg-gray-800 text-gray-300 pt-14 pb-6 shadow-2xl">
+      <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-12">
 
-    {/* Services */}
-    <nav>
-      <h6 className="text-lg font-semibold mb-4">Services</h6>
-      <ul className="space-y-2 text-gray-300">
-        <li><a className="hover:text-red-400 cursor-pointer">Branding</a></li>
-        <li><a className="hover:text-red-400 cursor-pointer">Design</a></li>
-        <li><a className="hover:text-red-400 cursor-pointer">Marketing</a></li>
-        <li><a className="hover:text-red-400 cursor-pointer">Advertisement</a></li>
-      </ul>
-    </nav>
+        {/* About */}
+        <div>
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Tazul <span className="text-cyan-400">Islam</span>
+          </h3>
+          <p className="text-sm leading-relaxed">
+            Frontend Developer passionate about building modern, responsive,
+            and user-friendly web applications.
+          </p>
+        </div>
 
-    {/* Company */}
-    <nav>
-      <h6 className="text-lg font-semibold mb-4">Company</h6>
-      <ul className="space-y-2 text-gray-300">
-        <li><Link to="about" className="hover:text-red-400 cursor-pointer">About</Link></li>
-        <li><Link to="contact" className="hover:text-red-400 cursor-pointer">Contact</Link></li>
-        <li><a className="hover:text-red-400 cursor-pointer">Jobs</a></li>
-        <li><a className="hover:text-red-400 cursor-pointer">Press Kit</a></li>
-      </ul>
-    </nav>
+        {/* Links */}
+        <div>
+          <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+          <ul className="space-y-2">
+            {["Projects", "Contact"].map((item) => (
+              <li key={item}>
+                <Link
+                  to={`/${item.toLowerCase()}`}
+                  className="hover:text-cyan-400 transition duration-300"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-    {/* Social Media */}
-    <nav>
-      <h6 className="text-lg font-semibold mb-4">Follow Me</h6>
-      <div className="flex space-x-6">
-
-        {/* Facebook */}
-        <a href="https://web.facebook.com/tazul.islam.229952/" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition">
-          <svg fill="currentColor" width="28" height="28" viewBox="0 0 24 24">
-            <path d="M9 8H6v4h3v12h5V12h3.6l.4-4H14V6.7C14 5.7 14.2 5 15.5 5h2.5V1h-3.2C11.6 1 9 3 9 6.3V8z"/>
-          </svg>
-        </a>
-
-        {/* LinkedIn */}
-        <a href="https://www.linkedin.com/in/md-tazul-islam-21346b280/" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition">
-          <svg fill="currentColor" width="28" height="28" viewBox="0 0 24 24">
-            <path d="M4.98 3.5C3.87 3.5 3 4.37 3 5.48c0 1.09.87 1.98 1.98 1.98h.02C6.1 7.46 7 6.57 7 5.48 7 4.37 6.1 3.5 4.98 3.5zM3.5 21h3V9h-3v12zM14.5 9c-2.33 0-3.5 1.23-3.5 1.23V9h-3v12h3v-6.5c0-1.72.59-2.5 2.06-2.5 1.41 0 1.94 1.06 1.94 2.5V21h3v-6.98C18 10.73 16.41 9 14.5 9z"/>
-          </svg>
-        </a>
-
+        {/* Social */}
+        <div>
+          <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
+          <div className="flex gap-4">
+            {[ 
+              { icon: <FaFacebookF />, link: "https://facebook.com" },
+              { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
+              { icon: <FaGithub />, link: "https://github.com" },
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white
+                hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 hover:scale-110"
+              >
+                {item.icon}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    </nav>
 
-  </div>
-
-  <div className="text-center text-gray-500 mt-10 text-sm">
-    © {new Date().getFullYear()} My Portfolio — All Rights Reserved.
-  </div>
-</footer>
-
-    );
+      {/* Bottom */}
+      <div className="text-center text-sm text-gray-500 mt-12 border-t border-gray-700 pt-6">
+        © {new Date().getFullYear()} Tazul Islam. All Rights Reserved.
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

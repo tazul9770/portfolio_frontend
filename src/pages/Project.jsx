@@ -72,7 +72,7 @@ const Projects = () => {
       <motion.div
         initial="hidden"
         animate="visible"
-        className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 max-w-7xl mx-auto"
+        className="grid gap-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 max-w-7xl mx-auto"
       >
         {projects.map((project, i) => (
           <motion.div

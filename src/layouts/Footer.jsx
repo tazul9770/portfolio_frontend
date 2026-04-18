@@ -39,9 +39,9 @@ const Footer = () => {
           <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
           <div className="flex gap-4">
             {[ 
-              { icon: <FaFacebookF />, link: "https://facebook.com" },
-              { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
-              { icon: <FaGithub />, link: "https://github.com" },
+              { icon: <FaFacebookF />, link: "https://www.facebook.com/tazul.islam.229952/" },
+              { icon: <FaLinkedinIn />, link: "https://www.linkedin.com/in/mdtazulislam01/" },
+              { icon: <FaGithub />, link: "https://github.com/tazul9770" },
             ].map((item, i) => (
               <a
                 key={i}

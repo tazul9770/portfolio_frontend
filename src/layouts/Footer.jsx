@@ -12,7 +12,7 @@ const Footer = () => {
             Tazul <span className="text-cyan-400">Islam</span>
           </h3>
           <p className="text-sm leading-relaxed">
-            Frontend Developer passionate about building modern, responsive,
+            Full Stack Developer passionate about building modern, responsive,
             and user-friendly web applications.
           </p>
         </div>

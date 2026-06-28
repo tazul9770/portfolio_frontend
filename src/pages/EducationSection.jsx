@@ -3,7 +3,7 @@ const EducationSection = () => {
     {
       level: "SSC",
       year: "2018",
-      institution: "Nilakhia Govt Primary School",
+      institution: "Nilakhia R, J Pilot High School",
       gpa: "4.06",
       subject: "Humanities",
       details: "Completed secondary education with strong academic performance."

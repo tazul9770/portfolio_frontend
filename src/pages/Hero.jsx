@@ -52,7 +52,7 @@ const Hero = () => {
           {/* CTA */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a
-              href="file:///C:/Users/tazul/Downloads/Full%20Stack%20Developer%20Tazul%20Islam.pdf"
+              href="Full%20Stack%20Developer%20Tazul%20Islam.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-cyan-400 text-gray-900 font-semibold hover:bg-cyan-300 transition duration-300 shadow-lg shadow-cyan-400/30"

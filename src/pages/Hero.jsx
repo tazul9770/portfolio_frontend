@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import myImage from "../assets/tazul.png";
+import myImage from "../assets/tazul.jpg";
 import myResume from "../assets/Tazul_Islam_resume.pdf";
 
 const Hero = () => {

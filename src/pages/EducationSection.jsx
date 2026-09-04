@@ -18,12 +18,11 @@ const EducationSection = () => {
     },
     {
       level: "Honors",
-      year: "2022 – Present",
+      year: "2024",
       institution: "Sherpur Govt College",
-      gpa: "Ongoing",
+      gpa: "2.65",
       subject: "Economics",
-      note: "Final Year",
-      details: "Currently completing undergraduate studies with a focus on economics and data analysis."
+      details: "Completed undergraduate studies with a primary focus on Economics."
     },
   ];
 

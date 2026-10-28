@@ -29,7 +29,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#06121f] text-gray-300">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black text-gray-300">
 
       {/* ================= Background Glow ================= */}
 
